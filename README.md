@@ -4,7 +4,12 @@
 
 ### Training-Free Hierarchical Inference Acceleration for World Action Models
 
-[Code](./cosmos-policy-final) · [Cosmos Policy](https://github.com/NVlabs/cosmos-policy) · [Models](https://huggingface.co/collections/nvidia/cosmos-policy)
+[Zengyuan Zuo](https://scholar.google.com/citations?hl=zh-CN&user=jb-4yJgAAAAJ)<sup>1,\*</sup>,[Yongchang Zhang]([https://scholar.google.com/citations?user=JSqb7QIAAAAJ](https://github.com/uuuuZYC))<sup>1,\*</sup>, [Yiwu Zhong](https://yiwuzhong.notion.site/homepage)
+
+[VaLuE Lab](https://github.com/PKU-VaLuE-Lab), Peking University.
+
+[![Paper2](https://img.shields.io/badge/Paper-arXiv-red)]()
+[![Hits]()]()
 
 </div>
 
