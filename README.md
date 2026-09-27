@@ -148,10 +148,10 @@ methods are adapted to the Cosmos&nbsp;Policy architecture for a fair comparison
   <thead>
     <tr>
       <th>Method</th>
-      <th>Goal&nbsp;(SR&nbsp;/&nbsp;Speedup)</th>
-      <th>Object&nbsp;(SR&nbsp;/&nbsp;Speedup)</th>
-      <th>Spatial&nbsp;(SR&nbsp;/&nbsp;Speedup)</th>
-      <th>Long&nbsp;(SR&nbsp;/&nbsp;Speedup)</th>
+      <th>Goal</th>
+      <th>Object</th>
+      <th>Spatial</th>
+      <th>Long</th>
       <th>Success&nbsp;Rate&nbsp;↑</th>
       <th>Speedup&nbsp;↑</th>
       <th>Latency&nbsp;↓</th>
@@ -193,7 +193,7 @@ methods are adapted to the Cosmos&nbsp;Policy architecture for a fair comparison
 can only be evaluated on Long, as only the Long checkpoint is publicly
 available.
 
-| Method | Goal&nbsp;(SR&nbsp;/&nbsp;Speedup) | Object&nbsp;(SR&nbsp;/&nbsp;Speedup) | Spatial&nbsp;(SR&nbsp;/&nbsp;Speedup) | Long&nbsp;(SR&nbsp;/&nbsp;Speedup) | Success&nbsp;Rate&nbsp;↑ | Speedup&nbsp;↑ | Latency&nbsp;↓ |
+| Method | Goal | Object | Spatial | Long | Success&nbsp;Rate&nbsp;↑ | Speedup&nbsp;↑ | Latency&nbsp;↓ |
 |:--|--:|--:|--:|--:|--:|--:|--:|
 | Fast&#8209;WAM | 95.87&nbsp;/&nbsp;1.00 | 99.40&nbsp;/&nbsp;1.00 | 97.13&nbsp;/&nbsp;1.00 | 93.93&nbsp;/&nbsp;1.00 | **96.58%** | 1.00× | 0.5365&nbsp;s |
 | **+&nbsp;Ours** | 96.07&nbsp;/&nbsp;3.43 | 99.00&nbsp;/&nbsp;3.25 | 96.93&nbsp;/&nbsp;3.43 | 93.20&nbsp;/&nbsp;2.93 | 96.30% | **3.17×** | **0.1693&nbsp;s** |
