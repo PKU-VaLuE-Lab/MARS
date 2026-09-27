@@ -12,7 +12,7 @@
 </div>
 
 ## 📚 Overview
-<p align="center"><img src="assets/overview.pdf" width="90%"></p>
+<p align="center"><img src="assets/overview.svg" width="90%"></p>
 
 If HA-WAM is helpful to your projects, please help star this repo. Thank you! :point_left:
 
