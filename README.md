@@ -14,7 +14,7 @@
 
 </div>
 
-<details><summary>📖 Click for the full abstract of DiCache</summary>
+<details><summary>📖 Click for the full abstract of our method</summary>
 
 <div align="left">
 
