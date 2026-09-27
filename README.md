@@ -38,8 +38,6 @@ Model weights, benchmark datasets, simulator assets, local caches, and logs are 
 
 ## Evaluation
 
-The final runners accept a GPU index and a benchmark selection. The examples below evaluate all suites/tasks with seed 195 defaults.
-
 ### LIBERO
 
 ```bash
@@ -49,8 +47,6 @@ bash libero_final/eval.sh --gpu 0 all
 # HA-WAM: Action-Aware + Attention Skip + VAE Reuse
 bash libero_final/eval_standard.sh --gpu 0 all
 ```
-
-The accuracy/speed launch configurations and two-component ablations are provided under [`libero_final`](./cosmos-policy-final/libero_final).
 
 ### LIBERO-PRO
 
@@ -62,8 +58,6 @@ bash liberopro_final/eval.sh --gpu 0 all
 bash liberopro_final/eval_standard.sh --gpu 0 all
 ```
 
-LIBERO-PRO perturbation evaluation, split 10,000-episode launchers, and feature-gate ablations are provided under [`liberopro_final`](./cosmos-policy-final/liberopro_final) and [`liberoproablation`](./cosmos-policy-final/liberoproablation).
-
 ### RoboCasa
 
 ```bash
@@ -72,17 +66,6 @@ bash robocasa_final/eval.sh all --gpu 0
 
 # HA-WAM standard configuration
 bash robocasa_final/eval_standard.sh all --gpu 0
-```
-
-### Cache baselines
-
-DiCache, C³Cache, and X-Cache use the original policy inference path with their respective cache mechanisms:
-
-```bash
-# Replace libero_final with liberopro_final for LIBERO-PRO.
-bash libero_final/eval_dicache.sh --gpu 0 all
-bash libero_final/C3Cache.sh --gpu 0 all
-bash libero_final/xcache.sh --gpu 0 all
 ```
 
 ## Citation
