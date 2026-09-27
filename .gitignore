@@ -1,9 +1,12 @@
-# This workspace contains several independent research projects.  HA-WAM only
-# publishes the curated Cosmos-Policy implementation below.
+# This workspace contains several independent research projects. HA-WAM
+# publishes the curated Cosmos-Policy, OpenPI, and FastWAM implementations.
 /*
 !/.gitignore
 !/README.md
+!/assets/
 !/cosmos-policy-final/
+!/openpi/
+!/FastWAM/
 
 # Local environments and machine-specific benchmark configuration.
 **/.DS_Store
@@ -21,6 +24,10 @@
 **/.pytest_cache/
 **/.mypy_cache/
 **/.ruff_cache/
+**/.conda/
+**/.conda-*/
+**/.hf-cache/
+**/.home/
 **/.coverage
 **/build/
 **/dist/
@@ -39,6 +46,7 @@
 **/results/
 **/wandb/
 **/备份/
+**/runstate*/
 **/*.log
 **/*.flops.json
 **/*.trace.json
@@ -69,3 +77,13 @@
 /cosmos-policy-final/robocasa_scripts/vendor/robocasa/models/assets/
 /cosmos-policy-final/LIBERO-PRO/libero/libero/assets
 /cosmos-policy-final/ckpt
+
+# Upstream repositories are committed as source snapshots. Their local Git
+# metadata, environments, downloaded dependencies, simulator assets, and
+# checkpoints stay machine-local.
+/openpi/.git/
+/openpi/third_party/
+/FastWAM/.git/
+/FastWAM/assets/
+/FastWAM/fastwam_final/latency_calibration/
+/FastWAM/third_party/

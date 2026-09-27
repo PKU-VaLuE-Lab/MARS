@@ -1,6 +1,6 @@
 <div align="center">
 
-# HA-WAM
+<img src="./assets/ha-wam-logo.png" width="760" alt="HA-WAM">
 
 ### Training-Free Hierarchical Inference Acceleration for World Action Models
 
@@ -27,12 +27,57 @@ HA-WAM is an inference-time acceleration framework for world action models. It d
 
 ## Installation
 
-HA-WAM follows the upstream Cosmos Policy environment and checkpoint setup. See the official documentation before running an evaluation:
+Clone the repository first:
+
+```bash
+git clone https://github.com/Harbinzzy/HA-WAM.git
+cd HA-WAM
+```
+
+### Cosmos Policy
+
+The primary HA-WAM implementation follows the official Cosmos Policy Docker environment:
+
+```bash
+cd cosmos-policy-final
+docker build -t cosmos-policy docker
+```
+
+Setup details, checkpoints, and fine-tuning recipes:
 
 - [Environment setup](https://github.com/NVlabs/cosmos-policy/blob/main/SETUP.md)
 - [Cosmos Policy checkpoints and training data](https://huggingface.co/collections/nvidia/cosmos-policy)
 - [LIBERO fine-tuning and evaluation](https://github.com/NVlabs/cosmos-policy/blob/main/LIBERO.md)
 - [RoboCasa fine-tuning and evaluation](https://github.com/NVlabs/cosmos-policy/blob/main/ROBOCASA.md)
+
+### OpenPI / π0.5
+
+The OpenPI adaptation is stored in `openpi/` (including the final launchers in `openpi/openpi_final/`). Install [uv](https://docs.astral.sh/uv/getting-started/installation/), restore the two upstream example dependencies, and create the environment:
+
+```bash
+cd openpi
+git clone https://github.com/Physical-Intelligence/aloha.git third_party/aloha
+git clone https://github.com/Lifelong-Robot-Learning/LIBERO.git third_party/libero
+GIT_LFS_SKIP_SMUDGE=1 uv sync
+GIT_LFS_SKIP_SMUDGE=1 uv pip install -e .
+```
+
+See the included [OpenPI README](./openpi/README.md) for checkpoints and π0.5 fine-tuning.
+
+### FastWAM
+
+The FastWAM adaptation is stored in `FastWAM/`. Its upstream environment uses Python 3.10 and CUDA 12.8 builds of PyTorch:
+
+```bash
+cd FastWAM
+conda create -n fastwam python=3.10 -y
+conda activate fastwam
+pip install -U pip
+pip install torch==2.7.1+cu128 torchvision==0.22.1+cu128 --extra-index-url https://download.pytorch.org/whl/cu128
+pip install -e .
+```
+
+See the included [FastWAM README](./FastWAM/README.md) for released checkpoints, datasets, and model preparation.
 
 Model weights, benchmark datasets, simulator assets, local caches, and logs are intentionally excluded from this repository. Download them through the upstream instructions and set the corresponding checkpoint/cache paths for your machine.
 
