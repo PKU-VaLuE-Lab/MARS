@@ -3,9 +3,12 @@
 <img src="./assets/mars-logo.png" width="450" alt="MARS">
 <h2>Systematic Multi-Level Acceleration for World Action Models</h2>
 
-[Zengyuan Zuo](https://scholar.google.com/citations?hl=zh-CN&user=jb-4yJgAAAAJ)<sup>\*</sup>, [Yongchang Zhang](https://github.com/uuuuZYC)<sup>\*</sup>, [Guangyu Zhao](https://guangyu-zhao.github.io/), [Tianze Zhang](https://scholar.google.com/citations?user=TSzGqfAAAAAJ&hl=en), [Yiwu Zhong](https://yiwuzhong.notion.site/homepage)<sup>†</sup>
+[Zengyuan Zuo](https://scholar.google.com/citations?hl=zh-CN&user=jb-4yJgAAAAJ)<sup>1,\*</sup>, [Yongchang Zhang](https://github.com/uuuuZYC)<sup>1,\*</sup>, [Guangyu Zhao](https://guangyu-zhao.github.io/)<sup>1</sup>, [Tianze Zhang](https://scholar.google.com/citations?user=TSzGqfAAAAAJ&hl=en)<sup>1</sup><br>
+Biao Wu<sup>2</sup>, Meng Fang<sup>3</sup>, [Yiwu Zhong](https://yiwuzhong.notion.site/homepage)<sup>1,†</sup>
 
-[VaLuE Lab](https://github.com/PKU-VaLuE-Lab), Peking University.
+<sup>1</sup>[VaLuE Lab](https://github.com/PKU-VaLuE-Lab), Peking University &nbsp;&nbsp;
+<sup>2</sup>University of Technology Sydney &nbsp;&nbsp;
+<sup>3</sup>University of Liverpool
 
 *<b>Equal Contribution</b> <sup>†</sup><b>Corresponding Author</b>
 
