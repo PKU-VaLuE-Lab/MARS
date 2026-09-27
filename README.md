@@ -4,7 +4,7 @@
 
 ### Training-Free Hierarchical Inference Acceleration for World Action Models
 
-[Zengyuan Zuo](https://scholar.google.com/citations?hl=zh-CN&user=jb-4yJgAAAAJ)<sup>1,\*</sup>,[Yongchang Zhang]([https://scholar.google.com/citations?user=JSqb7QIAAAAJ](https://github.com/uuuuZYC))<sup>1,\*</sup>, [Yiwu Zhong](https://yiwuzhong.notion.site/homepage)
+[Zengyuan Zuo](https://scholar.google.com/citations?hl=zh-CN&user=jb-4yJgAAAAJ)<sup>\*</sup>,[Yongchang Zhang](https://github.com/uuuuZYC)<sup>\*</sup>, [Yiwu Zhong](https://yiwuzhong.notion.site/homepage)<sup>\†</sup>
 
 [VaLuE Lab](https://github.com/PKU-VaLuE-Lab), Peking University.
 
