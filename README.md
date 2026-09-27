@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./assets/ha-wam-logo.png" width="760" alt="HA-WAM">
+<img src="./assets/ha-wam-logo.png" width="500" alt="HA-WAM">
 
 ### Training-Free Hierarchical Inference Acceleration for World Action Models
 
