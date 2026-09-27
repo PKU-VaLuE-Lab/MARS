@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./assets/ha-wam-logo.png" width="450" alt="HA-WAM">
+<img src="./assets/mars-logo.png" width="450" alt="MARS">
 <h2>Training-Free Hierarchical Inference Acceleration for World Action Models</h2>
 
 [Zengyuan Zuo](https://scholar.google.com/citations?hl=zh-CN&user=jb-4yJgAAAAJ)<sup>\*</sup>, [Yongchang Zhang](https://github.com/uuuuZYC)<sup>\*</sup>, [Guangyu Zhao](https://guangyu-zhao.github.io/), [Yiwu Zhong](https://yiwuzhong.notion.site/homepage)<sup>†</sup>
@@ -12,7 +12,7 @@
 </div>
 
 ## 📚 Overview
-<p align="center"><img src="assets/overview.png" width="90%"></p>
+<p align="center"><img src="assets/overview.pdf" width="90%"></p>
 
 If HA-WAM is helpful to your projects, please help star this repo. Thank you! :point_left:
 
