@@ -134,6 +134,71 @@ bash robocasa_final/eval.sh all --gpu 0
 bash robocasa_final/eval_standard.sh all --gpu 0
 ```
 
+## 📈 Main Results
+
+**Comparison with representative training-free acceleration methods on
+[LIBERO](https://github.com/Lifelong-Robot-Learning/LIBERO) and
+[LIBERO-PRO](https://github.com/Zxy-MLlab/LIBERO-PRO).** All acceleration
+methods are adapted to the Cosmos Policy architecture for a fair comparison.
+
+<table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Goal<br>SR / Speedup</th>
+      <th>Object<br>SR / Speedup</th>
+      <th>Spatial<br>SR / Speedup</th>
+      <th>Long<br>SR / Speedup</th>
+      <th>Success Rate ↑</th>
+      <th>Speedup ↑</th>
+      <th>Latency ↓</th>
+      <th>FLOPs ↓</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><th colspan="9">LIBERO</th></tr>
+    <tr><td>Cosmos Policy</td><td>98.20 / 1.00</td><td>99.87 / 1.00</td><td>97.47 / 1.00</td><td>96.67 / 1.00</td><td>98.05%</td><td>1.00×</td><td>1.4001 s</td><td>100.00%</td></tr>
+    <tr><td>+ DiCache</td><td>98.07 / 1.70</td><td>99.87 / 1.66</td><td>97.80 / 1.67</td><td>97.27 / 1.72</td><td><strong>98.25%</strong></td><td>1.69×</td><td>0.8273 s</td><td>48.12%</td></tr>
+    <tr><td>+ C<sup>3</sup>ache<sup>*</sup></td><td>97.80 / 2.19</td><td>99.00 / 2.16</td><td>97.53 / 2.25</td><td>94.47 / 2.30</td><td>97.20%</td><td>2.24×</td><td>0.6256 s</td><td>33.18%</td></tr>
+    <tr><td>+ X-Cache<sup>*</sup></td><td>97.87 / 1.11</td><td>99.67 / 1.17</td><td>97.47 / 1.12</td><td>97.00 / 1.21</td><td>98.00%</td><td>1.17×</td><td>1.2017 s</td><td>80.20%</td></tr>
+    <tr><td><strong>+ Ours (Speed)</strong></td><td>96.73 / 3.89</td><td>99.07 / 4.08</td><td>97.60 / 3.87</td><td>96.27 / 4.07</td><td>97.42%</td><td><strong>4.00×</strong></td><td><strong>0.3498 s</strong></td><td><strong>18.39%</strong></td></tr>
+    <tr><td><strong>+ Ours (Acc.)</strong></td><td>98.47 / 3.06</td><td>99.60 / 3.29</td><td>97.80 / 3.10</td><td>96.60 / 3.19</td><td>98.12%</td><td>3.17×</td><td>0.4414 s</td><td>19.19%</td></tr>
+    <tr><th colspan="9">LIBERO-PRO</th></tr>
+    <tr><td>Cosmos Policy</td><td>43.67 / 1.00</td><td>46.13 / 1.00</td><td>47.40 / 1.00</td><td>45.33 / 1.00</td><td>45.63%</td><td>1.00×</td><td>1.4044 s</td><td>100.00%</td></tr>
+    <tr><td>+ DiCache</td><td>44.13 / 1.67</td><td>46.27 / 1.66</td><td>47.73 / 1.63</td><td>45.07 / 1.73</td><td><strong>45.80%</strong></td><td>1.68×</td><td>0.8347 s</td><td>50.32%</td></tr>
+    <tr><td>+ C<sup>3</sup>ache<sup>*</sup></td><td>42.80 / 2.22</td><td>45.53 / 2.20</td><td>47.53 / 2.28</td><td>42.60 / 2.30</td><td>44.62%</td><td>2.26×</td><td>0.6222 s</td><td>32.86%</td></tr>
+    <tr><td>+ X-Cache<sup>*</sup></td><td>43.73 / 1.17</td><td>46.20 / 1.22</td><td>47.80 / 1.17</td><td>44.33 / 1.26</td><td>45.52%</td><td>1.22×</td><td>1.1549 s</td><td>75.55%</td></tr>
+    <tr><td><strong>+ Ours (Speed)</strong></td><td>44.20 / 3.91</td><td>45.67 / 3.86</td><td>47.33 / 3.96</td><td>44.93 / 3.99</td><td>45.53%</td><td><strong>3.94×</strong></td><td><strong>0.3564 s</strong></td><td><strong>18.80%</strong></td></tr>
+    <tr><td><strong>+ Ours (Acc.)</strong></td><td>43.67 / 3.05</td><td>47.00 / 3.08</td><td>47.60 / 3.06</td><td>44.60 / 3.11</td><td>45.72%</td><td>3.08×</td><td>0.4558 s</td><td>19.05%</td></tr>
+  </tbody>
+</table>
+
+<sub><sup>*</sup> denotes our reimplementation due to unavailable official code.</sub>
+
+**Evaluation on the [RoboCasa](https://github.com/robocasa/robocasa) benchmark.**
+
+| Method | S.R. ↑ | Speedup ↑ | Latency ↓ | FLOPs ↓ |
+|:--|--:|--:|--:|--:|
+| Cosmos Policy | 66.69% | 1.00× | 2.2958 s | 100.00% |
+| + DiCache | 66.47% | 1.50× | 1.5305 s | 49.99% |
+| + C³ache<sup>*</sup> | 65.00% | 1.81× | 1.2653 s | 33.64% |
+| + X-Cache<sup>*</sup> | 66.37% | 1.20× | 1.9202 s | 72.86% |
+| + Falcon | 66.47% | 1.21× | 1.8968 s | 74.56% |
+| **+ Ours** | **66.94%** | **2.10×** | **1.0911 s** | **22.50%** |
+
+**Our method with additional WAM and VLA base models on LIBERO.** LingBot-VA
+can only be evaluated on Long, as only the Long checkpoint is publicly
+available.
+
+| Method | Goal<br>SR / Speedup | Object<br>SR / Speedup | Spatial<br>SR / Speedup | Long<br>SR / Speedup | Success Rate ↑ | Speedup ↑ | Latency ↓ |
+|:--|--:|--:|--:|--:|--:|--:|--:|
+| Fast-WAM | 95.87 / 1.00 | 99.40 / 1.00 | 97.13 / 1.00 | 93.93 / 1.00 | **96.58%** | 1.00× | 0.5365 s |
+| **+ Ours** | 96.07 / 3.43 | 99.00 / 3.25 | 96.93 / 3.43 | 93.20 / 2.93 | 96.30% | **3.17×** | **0.1693 s** |
+| LingBot-VA | -- | -- | -- | 97.40 / 1.00 | 97.40% | 1.00× | 13.4105 s |
+| **+ Ours** | -- | -- | -- | 98.13 / 2.88 | **98.13%** | **2.88×** | **4.6558 s** |
+| π<sub>0.5</sub> | 97.80 / 1.00 | 98.67 / 1.00 | 98.40 / 1.00 | 92.93 / 1.00 | **96.95%** | 1.00× | 0.1462 s |
+| **+ Ours** | 97.87 / 1.29 | 99.07 / 1.30 | 98.47 / 1.33 | 92.27 / 1.24 | 96.92% | **1.28×** | **0.1145 s** |
+
 ## 📝 Citation
 
 Paper and BibTeX will be added upon release.
