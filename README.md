@@ -24,7 +24,7 @@ HA-WAM is an inference-time acceleration framework for world action models. It d
 - **Redundancy-Aware Attention Skipping** reuses stable self- and cross-attention computation inside the action DiT.
 - **Shallow-Verify Visual Token Reuse** detects visual changes independently for the primary and wrist views, then reuses unchanged image latents.
 
-## Installation
+## 🛠️ Installation
 
 Clone the repository first:
 
@@ -80,7 +80,7 @@ See the included [FastWAM README](./FastWAM/README.md) for released checkpoints,
 
 Model weights, benchmark datasets, simulator assets, local caches, and logs are intentionally excluded from this repository. Download them through the upstream instructions and set the corresponding checkpoint/cache paths for your machine.
 
-## Evaluation
+## 📊 Evaluation
 
 ### LIBERO
 
@@ -112,7 +112,7 @@ bash robocasa_final/eval.sh all --gpu 0
 bash robocasa_final/eval_standard.sh all --gpu 0
 ```
 
-## Citation
+## 📝 Citation
 
 Paper and BibTeX will be added upon release.
 
@@ -120,10 +120,14 @@ Paper and BibTeX will be added upon release.
 % Coming soon.
 ```
 
-## Acknowledgments
+## 🙏 Acknowledgments
 
 This project is built on [NVIDIA Cosmos Policy](https://github.com/NVlabs/cosmos-policy). We also thank the authors of [LIBERO](https://github.com/Lifelong-Robot-Learning/LIBERO), [LIBERO-PRO](https://github.com/Zxy-MLlab/LIBERO-PRO), and [RoboCasa](https://github.com/robocasa/robocasa) for their benchmarks.
 
-## License
+## 📄 License
 
 Please follow the licenses included in [`cosmos-policy-final`](./cosmos-policy-final/LICENSE).
+
+## 📮 Contact
+
+📮📮📮 Should you have any problems, please contact Zengyuan Zuo at [3565741165@qq.com](mailto:3565741165@qq.com). We will respond to your request as soon as possible!
