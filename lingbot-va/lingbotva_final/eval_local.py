@@ -62,7 +62,7 @@ def parse_work_plan(raw: str | None) -> list[dict[str, object]]:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--test-num", type=int, required=True)
+    parser.add_argument("--test-num", type=int, default=50)
     parser.add_argument("--suite", choices=SUITES, default="libero_10")
     parser.add_argument("--work-plan-json")
     parser.add_argument("--task-range", type=int, nargs=2, default=(0, 10))

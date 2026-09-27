@@ -145,7 +145,7 @@ GPU=0 SEED=195 bash fastwam_final/eval.sh
 
 ```bash
 cd lingbot-va
-bash lingbotva_final/eval.sh 0 195 200
+bash lingbotva_final/eval.sh 0 195 50
 ```
 
 ## 📈 Main Results

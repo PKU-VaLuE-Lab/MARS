@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-if [[ $# -lt 3 || $# -gt 6 ]]; then
-  echo "Usage: $0 <gpu> <seed> <episodes-per-task> [suite] [task-start] [task-end]" >&2
+if [[ $# -lt 2 || $# -gt 6 ]]; then
+  echo "Usage: $0 <gpu> <seed> [episodes-per-task=50] [suite] [task-start] [task-end]" >&2
   exit 2
 fi
 
 gpu="$1"
 seed="$2"
-test_num="$3"
+test_num="${3:-50}"
 suite="${4:-libero_10}"
 task_start="${5:-0}"
 task_end="${6:-10}"

@@ -44,12 +44,12 @@ the other three LIBERO suites require their corresponding trained checkpoints.
 ## Evaluation
 
 The portable launcher takes
-`<gpu> <seed> <episodes-per-task> [suite] [task-start] [task-end]`.
-For the complete 2,000-episode LIBERO-LONG evaluation:
+`<gpu> <seed> [episodes-per-task=50] [suite] [task-start] [task-end]`.
+For the standard 500-episode LIBERO-LONG evaluation:
 
 ```bash
-# 10 tasks x 200 deterministic episodes, seed 195
-bash lingbotva_final/eval.sh 0 195 200
+# 10 tasks x 50 deterministic episodes, seed 195
+bash lingbotva_final/eval.sh 0 195 50
 ```
 
 The accelerated configuration reproduces the selected thresholds: video
