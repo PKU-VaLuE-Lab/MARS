@@ -2,9 +2,7 @@
 
 # HA-WAM
 
-### Hierarchical Acceleration for World-Action Models
-
-Efficient inference for vision-language-action policies through hierarchical, query-adaptive computation reuse.
+### Training-Free Hierarchical Inference Acceleration for World Action Models
 
 [Code](./cosmos-policy-final) · [Cosmos Policy](https://github.com/NVlabs/cosmos-policy) · [Models](https://huggingface.co/collections/nvidia/cosmos-policy)
 
@@ -18,13 +16,13 @@ Add the final figure here, for example:
 
 ## Introduction
 
-HA-WAM is an inference-time acceleration framework for world-action models. It dynamically reduces redundant computation at three complementary levels while retaining the original policy and checkpoint:
+HA-WAM is an inference-time acceleration framework for world action models. It dynamically reduces redundant computation at three complementary levels:
 
 - **Action-aware denoising-step skipping** routes simple action queries through fewer denoising steps and preserves full computation for harder motion.
 - **Attention skipping** reuses stable self- and cross-attention computation inside the action DiT.
-- **Feature-guided VAE reuse** detects visual changes independently for the primary and wrist views, then reuses unchanged image latents.
+- **VAE reuse** detects visual changes independently for the primary and wrist views, then reuses unchanged image latents.
 
-The current implementation is built on [Cosmos Policy](https://github.com/NVlabs/cosmos-policy) and includes evaluation support for **LIBERO**, **LIBERO-PRO**, and **RoboCasa**, together with **DiCache**, **C³Cache**, and **X-Cache** comparison baselines.
+The current implementation is built on [Cosmos Policy](https://github.com/NVlabs/cosmos-policy) and includes evaluation support for **LIBERO**, **LIBERO-PRO**, and **RoboCasa**.
 
 ## Highlights
 
@@ -35,13 +33,6 @@ The current implementation is built on [Cosmos Policy](https://github.com/NVlabs
 - Reproducible final launchers, ablations, and cache baselines for three benchmarks.
 
 ## Installation
-
-Clone HA-WAM and enter the implementation directory:
-
-```bash
-git clone https://github.com/Harbinzzy/HA-WAM.git
-cd HA-WAM/cosmos-policy-final
-```
 
 HA-WAM follows the upstream Cosmos Policy environment and checkpoint setup. See the official documentation before running an evaluation:
 
