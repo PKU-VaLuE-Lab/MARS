@@ -18,7 +18,7 @@
 
 <div align="left">
 
-> World Action Models (WAMs), which jointly predict future world states and robot actions, are emerging as a promising alternative to Vision-Language-Action (VLA) models. While efficient inference for VLAs has been widely studied, the acceleration of WAMs remains relatively underexplored. Moreover, existing WAM acceleration methods typically exploit redundancy along only a single computational axis, overlooking substantial redundancy across the full pipeline, resulting in either limited speedups or drops in success rate. To address these limitations, we propose **MARS**, a training-free multi-level inference acceleration framework that systematically exploits distinct sources of redundancy at three computational levels: (1) across Transformer blocks, we selectively skip redundant self- and cross-attention while preserving components important for action generation; (2) across diffusion denoising steps, we perform action-aware routing between direct one-step generation for coarse-grained stages and residual-reuse multi-step sampling for fine-grained stages; (3) across consecutive action chunks, we reuse previously predicted future visual tokens, guarded by a shallow VAE-based verifier that determines whether the predicted visual changes remain consistent with the current observation. These mechanisms are synergistically integrated into pretrained WAMs in a plug-and-play manner, yielding substantial end-to-end speedups while preserving task performance. Extensive experiments across multiple backbones and benchmarks demonstrate that our method achieves a superior efficiency-performance trade-off, delivering up to a 4.0× speedup in LIBERO/LIBERO-PRO and 2.1× in RoboCasa.
+> World Action Models (WAMs) are emerging as a promising alternative to Vision-Language-Action (VLA) models. Existing VLA acceleration methods primarily reduce VLM computation and are not directly applicable to diffusion-based WAMs. Moreover, WAM acceleration methods typically target redundancy along only a single computational axis, overlooking substantial redundancy across the full pipeline, resulting in either limited speedups or drops in success rate. To address these limitations, we propose **MARS**, a training-free multi-level acceleration framework that systematically exploits distinct sources of redundancy at three computational levels: (1) across Transformer blocks, we selectively skip redundant attention components; (2) across diffusion denoising steps, we perform action-aware routing to adaptively skip diffusion steps; (3) across consecutive action chunks, we reuse future visual tokens, thereby skipping the VAE encoding. These mechanisms are synergistically integrated in a plug-and-play manner. Extensive experiments across multiple benchmarks and base models demonstrate that our method achieves a superior efficiency-performance trade-off, delivering up to a 4.00×/3.94× speedup in LIBERO/LIBERO-PRO, 2.10× in RoboCasa, and consistent speedups on real-world tasks, while maintaining comparable success rates.
 </details>
 </div>
 
@@ -29,10 +29,10 @@ If MARS is helpful to your projects, please help star this repo. Thank you! :poi
 
 ## 🌟 Introduction
 
-Our method is an inference-time acceleration framework for world action models. It dynamically reduces redundant computation at three complementary levels:
+Our method is an inference-time acceleration framework for world action models. It dynamically reduces redundant computation at three levels:
 
-- **Redundancy-Aware Attention Skipping** skips low-impact self- and cross-attention computation within each denoising step.
-- **Action-Aware Diffusion Step Skip** dynamically routes each query between one-step generation and residual-reuse multi-step sampling based on motion granularity.
+- **Selective Attention Skipping** skips low-impact self- and cross-attention computation within each denoising step.
+- **Action-Aware Step Skipping** dynamically routes each query between one-step generation and residual-reuse multi-step sampling based on motion granularity.
 - **Shallow-Verify Visual Token Reuse** verifies visual consistency using shallow VAE features and reuses predicted future visual tokens when reliable.
 
 ## 🛠️ Installation
@@ -40,7 +40,7 @@ Our method is an inference-time acceleration framework for world action models. 
 Clone the repository first:
 
 ```bash
-git clone https://github.com/Harbinzzy/MARS.git
+git clone https://github.com/PKU-VaLuE-Lab/MARS.git
 cd MARS
 ```
 
