@@ -116,7 +116,7 @@ def _run_signature(cfg: DictConfig, suite_names: list[str]) -> str:
 
 
 def _reserve_remaining_vram() -> None:
-    if os.environ.get("FASTWAM_ZSPEED_RESERVE", "1").strip().lower() not in {"1", "true", "yes", "on"}:
+    if os.environ.get("FASTWAM_ZSPEED_RESERVE", "0").strip().lower() not in {"1", "true", "yes", "on"}:
         return
     physical_gpu = int(os.environ["FASTWAM_PHYSICAL_GPU"])
     helper_dir = Path("/home/zzy/skills/lock-and-reserve-gpus/scripts")
