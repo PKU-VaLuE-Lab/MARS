@@ -32,8 +32,8 @@ If MARS is helpful to your projects, please help star this repo. Thank you! :poi
 Our method is an inference-time acceleration framework for world action models. It dynamically reduces redundant computation at three levels:
 
 - **Selective Attention Skipping** skips low-impact self- and cross-attention computation within each denoising step.
-- **Action-Aware Step Skipping** dynamically routes each query between one-step generation and residual-reuse multi-step sampling based on motion granularity.
-- **Shallow-Verify Visual Token Reuse** verifies visual consistency using shallow VAE features and reuses predicted future visual tokens when reliable.
+- **Action-Aware Step Skipping** dynamically routes each query between one-step generation and residual-reuse multi-step sampling based on motion granularity, reducing redundancy across diffusion denoising steps.
+- **Shallow-Verify Visual Token Reuse** verifies visual consistency using shallow VAE features and, when reliable, reuses predicted future visual tokens across consecutive action chunks.
 
 ## 🛠️ Installation
 
