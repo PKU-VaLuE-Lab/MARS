@@ -1,8 +1,7 @@
 <div align="center">
 
 <img src="./assets/ha-wam-logo.png" width="450" alt="HA-WAM">
-
-### Training-Free Hierarchical Inference Acceleration for World Action Models
+<h2>Training-Free Hierarchical Inference Acceleration for World Action Models</h2>
 
 [Zengyuan Zuo](https://scholar.google.com/citations?hl=zh-CN&user=jb-4yJgAAAAJ)<sup>\*</sup>,[Yongchang Zhang](https://github.com/uuuuZYC)<sup>\*</sup>, [Yiwu Zhong](https://yiwuzhong.notion.site/homepage)<sup>†</sup>
 
