@@ -7,7 +7,7 @@
 
 [VaLuE Lab](https://github.com/PKU-VaLuE-Lab), Peking University.
 
-(*<b>Equal Contribution</b>)(<sup>†</sup><b>Corresponding Author</b>)
+*<b>Equal Contribution</b> <sup>†</sup><b>Corresponding Author</b>
 
 [![Paper2](https://img.shields.io/badge/Paper-arXiv-red)]()
 [![Project Page](https://img.shields.io/badge/Project-Website-green)](https://harbinzzy.github.io/projects/mars.html)
