@@ -102,7 +102,7 @@ is specific to LIBERO-LONG.
 # Cosmos-Policy baseline
 bash libero_final/eval.sh --gpu 0 all
 
-# MARS: Action-Aware + Attention Skip + VAE Reuse
+# MARS standard configuration
 bash libero_final/eval_standard.sh --gpu 0 all
 ```
 
@@ -126,16 +126,6 @@ bash robocasa_final/eval.sh all --gpu 0
 bash robocasa_final/eval_standard.sh all --gpu 0
 ```
 
-### LingBot-VA / LIBERO-LONG
-
-```bash
-# Baseline, seed 195, 200 episodes per task
-bash lingbot-va/lingbotva_final/run_libero.sh baseline 0 195 200
-
-# MARS acceleration with the matched evaluation protocol
-bash lingbot-va/lingbotva_final/run_libero.sh accelerated 0 195 200
-```
-
 ## 📝 Citation
 
 Paper and BibTeX will be added upon release.
@@ -146,7 +136,7 @@ Paper and BibTeX will be added upon release.
 
 ## 🙏 Acknowledgments
 
-This project is built on [NVIDIA Cosmos Policy](https://github.com/NVlabs/cosmos-policy). We also thank the authors of [LingBot-VA](https://github.com/robbyant/lingbot-va), [LIBERO](https://github.com/Lifelong-Robot-Learning/LIBERO), [LIBERO-PRO](https://github.com/Zxy-MLlab/LIBERO-PRO), and [RoboCasa](https://github.com/robocasa/robocasa) for their models and benchmarks.
+This project is built on [NVIDIA Cosmos Policy](https://github.com/NVlabs/cosmos-policy). We also thank the authors of [Fast-WAM](https://yuantianyuan01.github.io/FastWAM/), [LingBot-VA](https://github.com/robbyant/lingbot-va), [OpenPI / π0.5](https://github.com/Physical-Intelligence/openpi), [LIBERO](https://github.com/Lifelong-Robot-Learning/LIBERO), [LIBERO-PRO](https://github.com/Zxy-MLlab/LIBERO-PRO), and [RoboCasa](https://github.com/robocasa/robocasa) for their models and benchmarks.
 
 ## 📮 Contact
 
