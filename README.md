@@ -14,6 +14,14 @@
 
 </div>
 
+<details><summary>📖 Click for the full abstract of DiCache</summary>
+
+<div align="left">
+
+> World Action Models (WAMs), which jointly predict future world states and robot actions, are emerging as a promising alternative to Vision-Language-Action (VLA) models. While efficient inference for VLAs has been widely studied, the acceleration of WAMs remains relatively underexplored. Moreover, existing WAM acceleration methods typically exploit redundancy along only a single computational axis, overlooking substantial redundancy across the full pipeline, resulting in either limited speedups or drops in success rate. To address these limitations, we propose \textbf{MARS}, a training-free multi-level inference acceleration framework that systematically exploits distinct sources of redundancy at three computational levels: (1) across Transformer blocks, we selectively skip redundant self- and cross-attention while preserving components important for action generation; (2) across diffusion denoising steps, we perform action-aware routing between direct one-step generation for coarse-grained stages and residual-reuse multi-step sampling for fine-grained stages; (3) across consecutive action chunks, we reuse previously predicted future visual tokens, guarded by a shallow VAE-based verifier that determines whether the predicted visual changes remain consistent with the current observation. These mechanisms are synergistically integrated into pretrained WAMs in a plug-and-play manner, yielding substantial end-to-end speedups while preserving task performance. Extensive experiments across multiple backbones and benchmarks demonstrate that our method achieves a superior efficiency-performance trade-off, delivering up to a 4.0$\times$ speedup in LIBERO/LIBERO-PRO and 2.1$\times$ in RoboCasa.
+</details>
+</div>
+
 ## 📚 Overview
 <p align="center"><img src="assets/overview.svg" width="90%"></p>
 
@@ -102,7 +110,7 @@ is specific to LIBERO-LONG.
 # Cosmos-Policy baseline
 bash libero_final/eval.sh --gpu 0 all
 
-# MARS standard configuration
+# MARS: Action-Aware + Attention Skip + VAE Reuse
 bash libero_final/eval_standard.sh --gpu 0 all
 ```
 
@@ -126,6 +134,16 @@ bash robocasa_final/eval.sh all --gpu 0
 bash robocasa_final/eval_standard.sh all --gpu 0
 ```
 
+### LingBot-VA / LIBERO-LONG
+
+```bash
+# Baseline, seed 195, 200 episodes per task
+bash lingbot-va/lingbotva_final/run_libero.sh baseline 0 195 200
+
+# MARS acceleration with the matched evaluation protocol
+bash lingbot-va/lingbotva_final/run_libero.sh accelerated 0 195 200
+```
+
 ## 📝 Citation
 
 Paper and BibTeX will be added upon release.
@@ -136,7 +154,7 @@ Paper and BibTeX will be added upon release.
 
 ## 🙏 Acknowledgments
 
-This project is built on [NVIDIA Cosmos Policy](https://github.com/NVlabs/cosmos-policy). We also thank the authors of [Fast-WAM](https://yuantianyuan01.github.io/FastWAM/), [LingBot-VA](https://github.com/robbyant/lingbot-va), [OpenPI / π0.5](https://github.com/Physical-Intelligence/openpi), [LIBERO](https://github.com/Lifelong-Robot-Learning/LIBERO), [LIBERO-PRO](https://github.com/Zxy-MLlab/LIBERO-PRO), and [RoboCasa](https://github.com/robocasa/robocasa) for their models and benchmarks.
+This project is built on [NVIDIA Cosmos Policy](https://github.com/NVlabs/cosmos-policy). We also thank the authors of [LingBot-VA](https://github.com/robbyant/lingbot-va), [LIBERO](https://github.com/Lifelong-Robot-Learning/LIBERO), [LIBERO-PRO](https://github.com/Zxy-MLlab/LIBERO-PRO), and [RoboCasa](https://github.com/robocasa/robocasa) for their models and benchmarks.
 
 ## 📮 Contact
 
