@@ -7,7 +7,10 @@
 
 [VaLuE Lab](https://github.com/PKU-VaLuE-Lab), Peking University.
 
+(*<b>Equal Contribution</b>)(<sup>†</sup><b>Corresponding Author</b>)
+
 [![Paper2](https://img.shields.io/badge/Paper-arXiv-red)]()
+[![Project Page](https://img.shields.io/badge/Project-Website-green)]()
 
 </div>
 
@@ -20,9 +23,9 @@ If MARS is helpful to your projects, please help star this repo. Thank you! :poi
 
 Our method is an inference-time acceleration framework for world action models. It dynamically reduces redundant computation at three complementary levels:
 
-- **Action-Aware Diffusion Step Skip** routes coarse-grained action queries through fewer denoising steps and preserves full computation for fine-grained motion.
-- **Redundancy-Aware Attention Skipping** reuses stable self- and cross-attention computation inside the action DiT.
-- **Shallow-Verify Visual Token Reuse** detects visual changes independently for the primary and wrist views, then reuses unchanged image latents.
+- **Redundancy-Aware Attention Skipping** skips low-impact self- and cross-attention computation within each denoising step.
+- **Action-Aware Diffusion Step Skip** dynamically routes each query between one-step generation and residual-reuse multi-step sampling based on motion granularity.
+- **Shallow-Verify Visual Token Reuse** verifies visual consistency using shallow VAE features and reuses predicted future visual tokens when reliable.
 
 ## 🛠️ Installation
 
@@ -80,13 +83,6 @@ See the included [FastWAM README](./FastWAM/README.md) for released checkpoints,
 
 ### LingBot-VA
 
-The LingBot-VA adaptation is stored in `lingbot-va/`. It includes the MARS
-stream-residual reuse and action-aware diffusion routing implementation, the
-deterministic LIBERO evaluator, result parser, and CPU regression tests. Install
-the upstream dependencies and LIBERO, then place the official LIBERO-LONG
-checkpoint at `lingbot-va/checkpoints/lingbot-va-posttrain-libero-long` (or set
-`LINGBOT_MODEL_PATH`):
-
 ```bash
 cd lingbot-va
 pip install -r requirements.txt
@@ -97,8 +93,6 @@ pip install -e third_party/LIBERO
 See the included [LingBot-VA README](./lingbot-va/README.md) for the baseline and
 accelerated evaluation commands. The released LingBot-VA checkpoint used here
 is specific to LIBERO-LONG.
-
-Model weights, benchmark datasets, simulator assets, local caches, and logs are intentionally excluded from this repository. Download them through the upstream instructions and set the corresponding checkpoint/cache paths for your machine.
 
 ## 📊 Evaluation
 
