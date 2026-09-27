@@ -45,7 +45,7 @@ docker build -t cosmos-policy docker
 Setup details, checkpoints, and fine-tuning recipes:
 
 - [Environment setup](https://github.com/NVlabs/cosmos-policy/blob/main/SETUP.md)
-- [Cosmos Policy checkpoints and training data](https://huggingface.co/collections/nvidia/cosmos-policy)
+- [Cosmos Policy checkpoints](https://huggingface.co/collections/nvidia/cosmos-policy)
 - [LIBERO fine-tuning and evaluation](https://github.com/NVlabs/cosmos-policy/blob/main/LIBERO.md)
 - [RoboCasa fine-tuning and evaluation](https://github.com/NVlabs/cosmos-policy/blob/main/ROBOCASA.md)
 
