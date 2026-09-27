@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./assets/ha-wam-logo.png" width="500" alt="HA-WAM">
+<img src="./assets/ha-wam-logo.png" width="450" alt="HA-WAM">
 
 ### Training-Free Hierarchical Inference Acceleration for World Action Models
 
@@ -13,7 +13,7 @@
 </div>
 
 ## 📚 Overview
-<p align="center"><img src="assets/overview.png" width="65%"></p>
+<p align="center"><img src="assets/overview.png" width="90%"></p>
 
 If HA-WAM is helpful to your projects, please help star this repo. Thank you! :point_left:
 
