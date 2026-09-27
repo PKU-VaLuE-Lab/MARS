@@ -1,0 +1,71 @@
+# This workspace contains several independent research projects.  HA-WAM only
+# publishes the curated Cosmos-Policy implementation below.
+/*
+!/.gitignore
+!/README.md
+!/cosmos-policy-final/
+
+# Local environments and machine-specific benchmark configuration.
+**/.DS_Store
+**/.idea/
+**/.vscode/
+**/.libero/
+**/.liberopro/
+**/.env
+**/.env.*
+**/*.local
+
+# Python/build caches.
+**/__pycache__/
+**/*.py[cod]
+**/.pytest_cache/
+**/.mypy_cache/
+**/.ruff_cache/
+**/.coverage
+**/build/
+**/dist/
+**/*.egg-info/
+
+# Evaluation logs, profiles, temporary files, and generated outputs.
+**/logs/
+**/logs*/
+**/*logs/
+**/explorelogs/
+**/cache/
+**/.cache/
+**/tmp/
+**/temp/
+**/outputs/
+**/results/
+**/wandb/
+**/备份/
+**/*.log
+**/*.flops.json
+**/*.trace.json
+**/*.prof
+**/*.mp4
+**/*.avi
+
+# Checkpoints, model weights, and local datasets.
+**/ckpt/
+**/ckpts/
+**/checkpoint/
+**/checkpoints/
+**/weights/
+**/pretrained/
+**/*.pt
+**/*.pth
+**/*.ckpt
+**/*.safetensors
+**/*.onnx
+**/*.tflite
+**/*.npy
+**/*.npz
+**/*.h5
+**/*.hdf5
+
+# Machine-local simulator assets in this workspace are absolute symlinks.
+# Install/download the benchmark assets using the instructions in README.md.
+/cosmos-policy-final/robocasa_scripts/vendor/robocasa/models/assets/
+/cosmos-policy-final/LIBERO-PRO/libero/libero/assets
+/cosmos-policy-final/ckpt

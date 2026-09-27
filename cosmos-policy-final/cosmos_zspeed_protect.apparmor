@@ -1,0 +1,32 @@
+#include <tunables/global>
+
+# This profile is entered explicitly with aa-exec by cosmos-policy evaluation
+# services.  It intentionally leaves normal runtime resources unrestricted;
+# its only confinement is refusing signals from unconfined processes (the
+# profile inherited by remote root shells and PID 1 on this host).  Evaluation
+# children inherit this same profile and may still signal one another.  A
+# planned job transition first unloads this profile, then uses SIGTERM.
+profile cosmos-zspeed-protect flags=(attach_disconnected,mediate_deleted) {
+  file,
+  capability,
+  network,
+  dbus,
+  signal,
+  ptrace,
+  unix,
+
+  deny signal (receive) peer=unconfined,
+}
+
+# Used only by the local protected-service transition helper.  Because its
+# label is not ``unconfined``, the evaluation profile accepts its SIGTERM while
+# continuing to reject signals from remote root shells and PID 1.
+profile cosmos-zspeed-controller flags=(attach_disconnected,mediate_deleted) {
+  file,
+  capability,
+  network,
+  dbus,
+  signal,
+  ptrace,
+  unix,
+}
