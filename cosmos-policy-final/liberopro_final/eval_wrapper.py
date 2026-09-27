@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run the finalized LIBERO-Pro baseline or any validated accelerator subset."""
+"""Run the finalized MARS configuration on LIBERO-Pro."""
 
 from __future__ import annotations
 
@@ -51,7 +51,7 @@ shallowvaeskip = None
 actionaware = None
 
 # Import order builds one model-loading chain:
-# baseline -> VAE reuse -> ActionAware -> Self/Cross pruning.
+# VAE reuse -> ActionAware -> Self/Cross skipping.
 if "vaeskip" in MECHANISMS:
     import eval_shallowvaeskip_wrapper as shallowvaeskip
 
@@ -95,7 +95,7 @@ def patch_runtime_with_final_marker(module, *args, **kwargs):
     previous_patch_runtime(module, *args, **kwargs)
     if shallowvaeskip is not None:
         shallowvaeskip._set_flop_profile_callable(module.get_action)
-    enabled = ",".join(sorted(MECHANISMS)) if MECHANISMS else "baseline"
+    enabled = ",".join(sorted(MECHANISMS))
     print(f"[LIBERO-Pro final] enabled mechanisms={enabled}")
 
 

@@ -62,7 +62,6 @@ def parse_work_plan(raw: str | None) -> list[dict[str, object]]:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--variant", choices=("baseline", "probe", "accelerated"), required=True)
     parser.add_argument("--test-num", type=int, required=True)
     parser.add_argument("--suite", choices=SUITES, default="libero_10")
     parser.add_argument("--work-plan-json")
@@ -96,7 +95,7 @@ def main() -> int:
         "LINGBOT_RUN_CONFIG "
         + json.dumps(
             {
-                "variant": args.variant,
+                "variant": "mars",
                 "suite": args.suite if not work_plan else "work_plan",
                 "work_plan": [
                     {**item, "out_dir": str(item["out_dir"])} for item in work_plan
@@ -198,7 +197,7 @@ def main() -> int:
         mean_query_time = sum(query_times) / query_count if query_count else 0.0
         final = {
             **result,
-            "variant": args.variant,
+            "variant": "mars",
             "query_count": query_count,
             "mean_query_time_s": mean_query_time,
         }

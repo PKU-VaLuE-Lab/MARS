@@ -1,38 +1,24 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-if [[ $# -lt 4 || $# -gt 7 ]]; then
-  echo "Usage: $0 <baseline|accelerated> <gpu> <seed> <episodes-per-task> [suite] [task-start] [task-end]" >&2
+if [[ $# -lt 3 || $# -gt 6 ]]; then
+  echo "Usage: $0 <gpu> <seed> <episodes-per-task> [suite] [task-start] [task-end]" >&2
   exit 2
 fi
 
-variant="$1"
-gpu="$2"
-seed="$3"
-test_num="$4"
-suite="${5:-libero_10}"
-task_start="${6:-0}"
-task_end="${7:-10}"
-
-case "${variant}" in
-  baseline)
-    cache_mode="off"
-    action_mode="off"
-    ;;
-  accelerated)
-    cache_mode="route"
-    action_mode="route"
-    ;;
-  *)
-    echo "variant must be baseline or accelerated" >&2
-    exit 2
-    ;;
-esac
+gpu="$1"
+seed="$2"
+test_num="$3"
+suite="${4:-libero_10}"
+task_start="${5:-0}"
+task_end="${6:-10}"
+cache_mode="route"
+action_mode="route"
 
 project_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 python_bin="${PYTHON_BIN:-python}"
 checkpoint="${LINGBOT_MODEL_PATH:-${project_root}/checkpoints/lingbot-va-posttrain-libero-long}"
-run_name="${variant}_${suite}_seed${seed}_n${test_num}_tasks${task_start}-${task_end}"
+run_name="mars_${suite}_seed${seed}_n${test_num}_tasks${task_start}-${task_end}"
 out_dir="${LINGBOT_OUT_DIR:-${project_root}/results/${run_name}}"
 log_path="${LINGBOT_LOG_PATH:-${project_root}/logs/${run_name}.log}"
 
@@ -72,7 +58,6 @@ export LINGBOT_ACTIONAWARE_FEATURE_STEPS="${LINGBOT_ACTIONAWARE_FEATURE_STEPS:-1
 export LINGBOT_ACTIONAWARE_TRANS_THRESHOLD="${LINGBOT_ACTIONAWARE_TRANS_THRESHOLD:-0.25}"
 
 "${python_bin}" "${project_root}/lingbotva_final/eval_local.py" \
-  --variant "${variant}" \
   --suite "${suite}" \
   --task-range "${task_start}" "${task_end}" \
   --test-num "${test_num}" \

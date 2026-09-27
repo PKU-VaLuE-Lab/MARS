@@ -3,44 +3,9 @@ set -euo pipefail
 
 FINAL_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd -- "${FINAL_DIR}/.." && pwd)"
-ENTRYPOINT="$(basename -- "${BASH_SOURCE[0]}")"
-
-case "${ENTRYPOINT}" in
-  eval.sh)
-    VARIANT="baseline"
-    MECHANISMS=""
-    VAE_PROFILE=""
-    ;;
-  eval_standard.sh)
-    VARIANT="standard"
-    MECHANISMS="actionaware,selfcross,vaeskip"
-    VAE_PROFILE="safe"
-    ;;
-  eval_actionaware_vaeskip.sh)
-    VARIANT="actionaware_vaeskip"
-    MECHANISMS="actionaware,vaeskip"
-    VAE_PROFILE="safe"
-    ;;
-  eval_selfcross_vaeskip.sh)
-    VARIANT="selfcross_vaeskip"
-    MECHANISMS="selfcross,vaeskip"
-    VAE_PROFILE="safe"
-    ;;
-  eval_standard_safe.sh)
-    VARIANT="standard_safe"
-    MECHANISMS="actionaware,selfcross,vaeskip"
-    VAE_PROFILE="safe"
-    ;;
-  eval_standard_fast.sh)
-    VARIANT="standard_fast"
-    MECHANISMS="actionaware,selfcross,vaeskip"
-    VAE_PROFILE="fast"
-    ;;
-  *)
-    echo "Unsupported RoboCasa final entrypoint: ${ENTRYPOINT}" >&2
-    exit 2
-    ;;
-esac
+VARIANT="mars"
+MECHANISMS="actionaware,selfcross,vaeskip"
+VAE_PROFILE="safe"
 
 GPU="${GPU:-0}"
 ARGS=()

@@ -3,34 +3,8 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 ROOT_DIR="$(cd -- "${SCRIPT_DIR}/.." && pwd)"
-ENTRYPOINT="$(basename -- "${BASH_SOURCE[0]}")"
-
-case "${ENTRYPOINT}" in
-  eval.sh)
-    VARIANT="baseline"
-    MECHANISMS=""
-    ;;
-  eval_standard.sh)
-    VARIANT="standard"
-    MECHANISMS="actionaware,selfcross,vaeskip"
-    ;;
-  eval_actionaware_selfcross.sh)
-    VARIANT="actionaware_selfcross"
-    MECHANISMS="actionaware,selfcross"
-    ;;
-  eval_actionaware_vaeskip.sh)
-    VARIANT="actionaware_vaeskip"
-    MECHANISMS="actionaware,vaeskip"
-    ;;
-  eval_selfcross_vaeskip.sh)
-    VARIANT="selfcross_vaeskip"
-    MECHANISMS="selfcross,vaeskip"
-    ;;
-  *)
-    echo "Unsupported LIBERO-Pro final entrypoint: ${ENTRYPOINT}" >&2
-    exit 2
-    ;;
-esac
+VARIANT="mars"
+MECHANISMS="actionaware,selfcross,vaeskip"
 
 GPU="${GPU:-0}"
 ARGS=()

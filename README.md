@@ -64,7 +64,7 @@ Setup details, checkpoints, and fine-tuning recipes:
 
 ### OpenPI / π0.5
 
-The OpenPI adaptation is stored in `openpi/` (including the final launchers in `openpi/openpi_final/`). Install [uv](https://docs.astral.sh/uv/getting-started/installation/), restore the two upstream example dependencies, and create the environment:
+The OpenPI adaptation is stored in `openpi/`, with the MARS evaluator in `openpi/openpi_final/eval.sh`. Install [uv](https://docs.astral.sh/uv/getting-started/installation/), restore the two upstream example dependencies, and create the environment:
 
 ```bash
 cd openpi
@@ -100,8 +100,8 @@ git clone https://github.com/Lifelong-Robot-Learning/LIBERO.git third_party/LIBE
 pip install -e third_party/LIBERO
 ```
 
-See the included [LingBot-VA README](./lingbot-va/README.md) for the baseline and
-accelerated evaluation commands. The released LingBot-VA checkpoint used here
+See the included [LingBot-VA README](./lingbot-va/README.md) for the MARS
+evaluation command. The released LingBot-VA checkpoint used here
 is specific to LIBERO-LONG.
 
 ## 📊 Evaluation
@@ -109,31 +109,43 @@ is specific to LIBERO-LONG.
 ### LIBERO
 
 ```bash
-# Cosmos-Policy baseline
+cd cosmos-policy-final
 bash libero_final/eval.sh --gpu 0 all
-
-# MARS standard configuration
-bash libero_final/eval_standard.sh --gpu 0 all
 ```
 
 ### LIBERO-PRO
 
 ```bash
-# Cosmos-Policy baseline
+cd cosmos-policy-final
 bash liberopro_final/eval.sh --gpu 0 all
-
-# MARS standard configuration
-bash liberopro_final/eval_standard.sh --gpu 0 all
 ```
 
 ### RoboCasa
 
 ```bash
-# Cosmos-Policy baseline
+cd cosmos-policy-final
 bash robocasa_final/eval.sh all --gpu 0
+```
 
-# MARS standard configuration
-bash robocasa_final/eval_standard.sh all --gpu 0
+### OpenPI / π0.5
+
+```bash
+cd openpi
+GPU=0 SEED=195 bash openpi_final/eval.sh
+```
+
+### FastWAM
+
+```bash
+cd FastWAM
+GPU=0 SEED=195 bash fastwam_final/eval.sh
+```
+
+### LingBot-VA
+
+```bash
+cd lingbot-va
+bash lingbotva_final/eval.sh 0 195 200
 ```
 
 ## 📈 Main Results

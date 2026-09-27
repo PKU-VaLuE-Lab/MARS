@@ -13,11 +13,9 @@ The MARS-specific implementation consists of:
   residual reuse and action-aware diffusion-step routing;
 - `evaluation/libero/client.py`: deterministic, resumable LIBERO evaluation and
   structured per-query/per-episode metrics;
-- `lingbotva_final/eval_local.py`: single-GPU baseline and accelerated evaluator;
-- `lingbotva_final/log_utils.py` and `summarize.py`: log validation and summary
-  utilities;
-- `lingbotva_final/test_*.py`: CPU regression tests for the routing and log
-  parser.
+- `lingbotva_final/eval.sh`: single-GPU MARS evaluation entry point;
+- `lingbotva_final/eval_local.py` and `log_utils.py`: deterministic evaluation
+  and log validation utilities.
 
 Model weights, simulator assets, environments, caches, logs, and generated
 results are intentionally excluded.
@@ -46,34 +44,25 @@ the other three LIBERO suites require their corresponding trained checkpoints.
 ## Evaluation
 
 The portable launcher takes
-`<variant> <gpu> <seed> <episodes-per-task> [suite] [task-start] [task-end]`.
+`<gpu> <seed> <episodes-per-task> [suite] [task-start] [task-end]`.
 For the complete 2,000-episode LIBERO-LONG evaluation:
 
 ```bash
 # 10 tasks x 200 deterministic episodes, seed 195
-bash lingbotva_final/run_libero.sh baseline 0 195 200
-bash lingbotva_final/run_libero.sh accelerated 0 195 200
+bash lingbotva_final/eval.sh 0 195 200
 ```
 
 The accelerated configuration reproduces the selected thresholds: video
 accumulated relative-L1 `0.15`, action accumulated relative-L1 `0.25`, and
-physical-translation routing threshold `0.25`. Both variants use the official
+physical-translation routing threshold `0.25`. Evaluation uses the official
 20-step video and 50-step action schedules. Outputs and append-only logs are
 written below `results/` and `logs/` by default.
 
 You may select one task range or another suite explicitly:
 
 ```bash
-bash lingbotva_final/run_libero.sh accelerated 0 196 50 libero_10 0 5
-```
-
-## Tests and summaries
-
-```bash
-python -m unittest lingbotva_final.test_stream_acceleration
-python -m unittest lingbotva_final.test_log_utils
-python lingbotva_final/summarize.py logs/<evaluation>.log
+bash lingbotva_final/eval.sh 0 196 50 libero_10 0 5
 ```
 
 Episode seeds are derived as `seed + task_id * 100000 + episode_id`, so the
-same task/episode pairs stay matched across variants and resumed runs.
+same task/episode pairs stay matched across repeated and resumed runs.

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run the finalized RoboCasa baseline or validated standard accelerator."""
+"""Run the finalized MARS configuration on RoboCasa."""
 
 from __future__ import annotations
 
@@ -40,7 +40,7 @@ shallowvaeskip = None
 actionaware = None
 
 # Import order builds one model-loading chain:
-# baseline -> VAE reuse -> ActionAware -> Self/Cross pruning.
+# VAE reuse -> ActionAware -> Self/Cross skipping.
 if "vaeskip" in MECHANISMS:
     import eval_shallowvaeskip_wrapper as shallowvaeskip
 
@@ -80,7 +80,7 @@ previous_patch_runtime = base_eval.patch_runtime
 
 def patch_runtime_with_final_marker(module, *args, **kwargs):
     previous_patch_runtime(module, *args, **kwargs)
-    enabled = ",".join(sorted(MECHANISMS)) if MECHANISMS else "baseline"
+    enabled = ",".join(sorted(MECHANISMS))
     print(f"[RoboCasa final] enabled mechanisms={enabled}")
 
 
