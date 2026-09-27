@@ -4,38 +4,26 @@
 
 ### Training-Free Hierarchical Inference Acceleration for World Action Models
 
-[Zengyuan Zuo](https://scholar.google.com/citations?hl=zh-CN&user=jb-4yJgAAAAJ)<sup>\*</sup>,[Yongchang Zhang](https://github.com/uuuuZYC)<sup>\*</sup>, [Yiwu Zhong](https://yiwuzhong.notion.site/homepage)<sup>\†</sup>
+[Zengyuan Zuo](https://scholar.google.com/citations?hl=zh-CN&user=jb-4yJgAAAAJ)<sup>\*</sup>,[Yongchang Zhang](https://github.com/uuuuZYC)<sup>\*</sup>, [Yiwu Zhong](https://yiwuzhong.notion.site/homepage)<sup>†</sup>
 
 [VaLuE Lab](https://github.com/PKU-VaLuE-Lab), Peking University.
 
 [![Paper2](https://img.shields.io/badge/Paper-arXiv-red)]()
-[![Hits]()]()
 
 </div>
 
-<!--
-Project overview image placeholder.
-Add the final figure here, for example:
-<p align="center"><img src="assets/overview.png" width="95%"></p>
--->
+## 📚 Overview
+<p align="center"><img src="assets/overview.pdf" width="95%"></p>
 
-## Introduction
+:star: If HA-WAM is helpful to your projects, please help star this repo. Thank you! :point_left:
+
+## 🌟 Introduction
 
 HA-WAM is an inference-time acceleration framework for world action models. It dynamically reduces redundant computation at three complementary levels:
 
-- **Action-aware denoising-step skipping** routes simple action queries through fewer denoising steps and preserves full computation for harder motion.
-- **Attention skipping** reuses stable self- and cross-attention computation inside the action DiT.
-- **VAE reuse** detects visual changes independently for the primary and wrist views, then reuses unchanged image latents.
-
-The current implementation is built on [Cosmos Policy](https://github.com/NVlabs/cosmos-policy) and includes evaluation support for **LIBERO**, **LIBERO-PRO**, and **RoboCasa**.
-
-## Highlights
-
-- Training-free, query-adaptive acceleration for pretrained world-action policies.
-- Hierarchical reuse across denoising steps, attention modules, and visual encoding.
-- Accuracy- and speed-oriented evaluation configurations.
-- Camera-aware VAE gating with RGB and shallow-VAE feature options.
-- Reproducible final launchers, ablations, and cache baselines for three benchmarks.
+- **Action-Aware Diffusion Step Skip** routes coarse-grained action queries through fewer denoising steps and preserves full computation for fine-grained motion.
+- **Redundancy-Aware Attention Skipping** reuses stable self- and cross-attention computation inside the action DiT.
+- **Shallow-Verify Visual Token Reuse** detects visual changes independently for the primary and wrist views, then reuses unchanged image latents.
 
 ## Installation
 
@@ -97,22 +85,6 @@ bash libero_final/C3Cache.sh --gpu 0 all
 bash libero_final/xcache.sh --gpu 0 all
 ```
 
-> The protected multi-GPU launchers used for formal timing runs assume NVIDIA `EXCLUSIVE_PROCESS` mode and machine-specific service permissions. The single-evaluation commands above are the portable entry points.
-
-## Project Structure
-
-```text
-cosmos-policy-final/
-├── cosmos_policy/       # Cosmos Policy model and inference implementation
-├── libero_final/        # LIBERO final configs, launchers, and baselines
-├── liberopro_final/     # LIBERO-PRO final configs, launchers, and baselines
-├── liberoproablation/   # LIBERO-PRO ablation launchers
-├── robocasa_final/      # RoboCasa final configs and launchers
-├── LIBERO-PRO/          # LIBERO-PRO benchmark integration
-├── c3cache_runtime.py   # C³Cache runtime integration
-└── xcache_runtime.py    # X-Cache runtime integration
-```
-
 ## Citation
 
 Paper and BibTeX will be added upon release.
@@ -123,8 +95,8 @@ Paper and BibTeX will be added upon release.
 
 ## Acknowledgments
 
-This project is built on [NVIDIA Cosmos Policy](https://github.com/NVlabs/cosmos-policy). We also thank the authors of [LIBERO](https://github.com/Lifelong-Robot-Learning/LIBERO), [LIBERO-PRO](https://github.com/Zxy-MLlab/LIBERO-PRO), and [RoboCasa](https://github.com/robocasa/robocasa) for their benchmarks and tools.
+This project is built on [NVIDIA Cosmos Policy](https://github.com/NVlabs/cosmos-policy). We also thank the authors of [LIBERO](https://github.com/Lifelong-Robot-Learning/LIBERO), [LIBERO-PRO](https://github.com/Zxy-MLlab/LIBERO-PRO), and [RoboCasa](https://github.com/robocasa/robocasa) for their benchmarks.
 
 ## License
 
-Please follow the licenses and third-party attributions included in [`cosmos-policy-final`](./cosmos-policy-final/LICENSE) and [`ATTRIBUTIONS.md`](./cosmos-policy-final/ATTRIBUTIONS.md).
+Please follow the licenses included in [`cosmos-policy-final`](./cosmos-policy-final/LICENSE).
