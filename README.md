@@ -2,7 +2,7 @@
 
 <h1>Systematic Multi-Level Acceleration for<br>World Action Models</h1>
 
-[Zengyuan Zuo](https://scholar.google.com/citations?hl=zh-CN&user=jb-4yJgAAAAJ)<sup>1,\*</sup>, [Yongchang Zhang](https://github.com/uuuuZYC)<sup>1,\*</sup>, [Guangyu Zhao](https://guangyu-zhao.github.io/)<sup>1</sup>, [Tianze Zhang](https://scholar.google.com/citations?user=TSzGqfAAAAAJ&hl=en)<sup>1</sup><br>
+[Zengyuan Zuo](https://scholar.google.com/citations?hl=zh-CN&user=jb-4yJgAAAAJ)<sup>1,\*</sup>, [Yongchang Zhang](https://uuuuzyc.github.io/)<sup>1,\*</sup>, [Guangyu Zhao](https://guangyu-zhao.github.io/)<sup>1</sup>, [Tianze Zhang](https://scholar.google.com/citations?user=TSzGqfAAAAAJ&hl=en)<sup>1</sup><br>
 [Biao Wu](https://scholar.google.com/citations?user=Y3SBBWMAAAAJ&hl=en)<sup>2</sup>, [Meng Fang](https://mengfn.github.io/)<sup>3</sup>, [Yiwu Zhong](https://yiwuzhong.notion.site/homepage)<sup>1,†</sup>
 
 <sup>1</sup>[VaLuE Lab](https://github.com/PKU-VaLuE-Lab), Peking University &nbsp;&nbsp;
