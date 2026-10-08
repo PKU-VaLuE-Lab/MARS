@@ -110,22 +110,29 @@ is specific to LIBERO-LONG.
 
 ```bash
 cd cosmos-policy-final
-bash libero_final/eval.sh --gpu 0 all
+bash libero_final/eval.sh baseline --gpu 0
+bash libero_final/eval.sh mars --gpu 0
 ```
 
 ### LIBERO-PRO
 
 ```bash
 cd cosmos-policy-final
-bash liberopro_final/eval.sh --gpu 0 all
+bash liberopro_final/eval.sh baseline --gpu 0
+bash liberopro_final/eval.sh mars --gpu 0
 ```
 
 ### RoboCasa
 
 ```bash
 cd cosmos-policy-final
-bash robocasa_final/eval.sh all --gpu 0
+bash robocasa_final/eval.sh baseline --gpu 0
+bash robocasa_final/eval.sh mars --gpu 0
 ```
+
+`baseline` and `mars` use the same deterministic evaluation and No-Flash
+attention backend. Omitting the mode keeps the previous behavior and runs
+`mars`.
 
 ### OpenPI / π0.5
 

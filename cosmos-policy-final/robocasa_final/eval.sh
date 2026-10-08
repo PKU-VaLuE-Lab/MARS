@@ -3,8 +3,7 @@ set -euo pipefail
 
 FINAL_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd -- "${FINAL_DIR}/.." && pwd)"
-VARIANT="mars"
-MECHANISMS="actionaware,selfcross,vaeskip"
+MODE="${COSMOS_EVAL_MODE:-mars}"
 VAE_PROFILE="safe"
 
 GPU="${GPU:-0}"
@@ -12,6 +11,18 @@ ARGS=()
 HAS_LOG_PATH=false
 while [[ $# -gt 0 ]]; do
   case "$1" in
+    baseline|mars)
+      MODE="$1"
+      shift
+      ;;
+    --mode)
+      MODE="$2"
+      shift 2
+      ;;
+    --mode=*)
+      MODE="${1#*=}"
+      shift
+      ;;
     --gpu)
       GPU="$2"
       shift 2
@@ -36,6 +47,21 @@ while [[ $# -gt 0 ]]; do
       ;;
   esac
 done
+
+case "${MODE}" in
+  baseline)
+    VARIANT="baseline"
+    MECHANISMS=""
+    ;;
+  mars)
+    VARIANT="mars"
+    MECHANISMS="actionaware,selfcross,vaeskip"
+    ;;
+  *)
+    echo "Unknown evaluation mode: ${MODE}. Expected baseline or mars." >&2
+    exit 2
+    ;;
+esac
 
 mkdir -p "${FINAL_DIR}/logs"
 if [[ "${HAS_LOG_PATH}" == false ]]; then
