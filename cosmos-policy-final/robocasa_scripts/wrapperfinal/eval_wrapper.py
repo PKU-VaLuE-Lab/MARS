@@ -262,7 +262,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("selection", nargs="?", default=None, help="all or a comma-separated task list")
     parser.add_argument("--task-set", default="all", help="Alias for positional selection")
-    parser.add_argument("--num-trials-per-task", type=int, default=20)
+    parser.add_argument("--num-trials-per-task", type=int, default=50)
     parser.add_argument("--max-tasks", type=int, default=0, help="Debug helper; 0 means all selected tasks")
     parser.add_argument("--seed", type=int, default=195)
     parser.add_argument("--num-denoising-steps-action", type=int, default=5)
