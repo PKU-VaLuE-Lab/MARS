@@ -19,24 +19,34 @@
 
 <details><summary>📖 Click for the full abstract of our method</summary>
 
-<div align="left">
+> World Action Models (WAMs) have emerged as a promising alternative for embodied intelligence by jointly predicting future world states and robot actions. However, their heavy visual encoding and iterative generative inference incur substantial latency, limiting their applicability to high-frequency closed-loop control. Existing training-free acceleration methods typically optimize a single stage, yielding limited speedups or degraded control under aggressive reuse. In this work, we systematically profile the inference overhead of WAMs and observe abundant redundancy across Transformer computation, diffusion denoising, and consecutive policy queries. However, the safe removal of such redundancy depends strongly on its impact on action prediction and control sensitivity. Based on these observations, we introduce **MARS**, a training-free and plug-and-play framework for multi-level WAM acceleration. MARS selectively removes low-impact attention computation, adaptively accelerates diffusion inference according to motion granularity, and speculatively reuses predicted future visual representations across consecutive queries with online verification. Together, these complementary mechanisms provide remarkable acceleration while limiting approximation error. Extensive experiments across LIBERO, LIBERO-PRO, and RoboCasa show that MARS achieves up to 4.00×, 3.94×, and 2.10× end-to-end speedups, respectively, while maintaining task success rate close to the original policy. Moreover, MARS generalizes across different model backbones and across simulation and real-robot experiments, substantially improving the efficiency–performance trade-off of WAM inference.
 
-> World Action Models (WAMs) are emerging as a promising alternative to Vision-Language-Action (VLA) models. Existing VLA acceleration methods primarily reduce VLM computation and are not directly applicable to diffusion-based WAMs. Moreover, WAM acceleration methods typically target redundancy along only a single computational axis, overlooking substantial redundancy across the full pipeline, resulting in either limited speedups or drops in success rate. To address these limitations, we propose **MARS**, a training-free multi-level acceleration framework that systematically exploits distinct sources of redundancy at three computational levels: (1) across Transformer blocks, we selectively skip redundant attention components; (2) across diffusion denoising steps, we perform action-aware routing to adaptively skip diffusion steps; (3) across consecutive action chunks, we reuse future visual tokens, thereby skipping the VAE encoding. These mechanisms are synergistically integrated in a plug-and-play manner. Extensive experiments across multiple benchmarks and base models demonstrate that our method achieves a superior efficiency-performance trade-off, delivering up to a 4.00×/3.94× speedup in LIBERO/LIBERO-PRO, 2.10× in RoboCasa, and consistent speedups on real-world tasks, while maintaining comparable success rates.
 </details>
-</div>
 
 ## 📚 Overview
-<p align="center"><img src="assets/overview.svg" width="90%"></p>
+<p align="center"><img src="assets/overview.svg" width="90%" alt="World Action Model inference pipeline and LIBERO-PRO efficiency–performance trade-off"></p>
+
+WAMs jointly predict future world states and robot actions. MARS provides a training-free, plug-and-play acceleration framework with flexible efficiency–performance trade-offs.
 
 If MARS is helpful to your projects, please help star this repo. Thank you! :point_left:
 
-## 🌟 Introduction
+## 🔎 Motivation: Multi-Level Redundancy
 
-Our method is an inference-time acceleration framework for world action models. It dynamically reduces redundant computation at three levels:
+Profiling Cosmos Policy in LIBERO reveals redundancy at three complementary levels:
 
-- **Selective Attention Skipping** skips low-impact self- and cross-attention computation within each denoising step.
-- **Action-Aware Step Skipping** dynamically routes each query between one-step generation and residual-reuse multi-step sampling based on motion granularity, reducing redundancy across diffusion denoising steps.
-- **Shallow-Verify Visual Token Reuse** verifies visual consistency using shallow VAE features and, when reliable, reuses predicted future visual tokens across consecutive action chunks.
+<p align="center"><img src="assets/insight.svg" width="100%" alt="WAM redundancy analysis: non-uniform attention importance, stable denoising outputs and DiT residuals, and observed versus predicted visual maps with an error map"></p>
+
+- **Transformer-Level Redundancy — Non-Uniform Attention.** Many cross-attention branches and self-attention heads have low importance, motivating selective attention skipping.
+- **Diffusion-Level Redundancy — Stable Output States and Residuals.** Denoising inputs vary substantially across steps, while denoising outputs and DiT residuals remain comparatively stable, motivating one-step generation and residual reuse.
+- **Cross-Query Redundancy — Speculative Visual Representation.** Predicted visual maps closely match observations at the next policy query, with small errors in the corresponding error map, motivating verified reuse of predicted future visual tokens.
+
+## 🌟 Method: Multi-Level Acceleration
+
+<p align="center"><img src="assets/methods.svg" width="100%" alt="MARS framework: Transformer-level attention skipping, diffusion-level acceleration, and cross-query visual token reuse with a shallow VAE verifier"></p>
+
+- **Transformer-Level Acceleration.** Selective Attention Skipping skips low-impact cross-attention branches and prunes low-importance self-attention heads while retaining components critical to action prediction.
+- **Diffusion-Level Acceleration.** The provisional action estimates motion granularity: coarse-grained motions use one-step generation, while fine-grained stages retain the original multi-step solver with DiT residual reuse.
+- **Cross-Query Acceleration.** Shallow VAE features verify whether predicted and observed visual changes are sufficiently consistent. When verification passes, MARS reuses predicted future visual tokens and skips the remaining VAE encoding; otherwise, it completes the normal encoding.
 
 ## 🛠️ Installation
 
@@ -208,7 +218,7 @@ methods are adapted to the Cosmos&nbsp;Policy architecture for a fair comparison
 | +&nbsp;Falcon | 66.47% | 1.21× | 1.8968&nbsp;s | 74.56% |
 | **+&nbsp;Ours** | **66.94%** | **2.10×** | **1.0911&nbsp;s** | **22.50%** |
 
-**Our method with additional WAM and VLA base models on LIBERO.** LingBot&#8209;VA
+**Our method with additional WAM and VLA base models on LIBERO.** We apply the compatible Transformer-level and diffusion-level components to these backbones. LingBot&#8209;VA
 can only be evaluated on Long, as only the Long checkpoint is publicly
 available.
 
