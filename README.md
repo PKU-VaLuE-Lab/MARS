@@ -12,7 +12,7 @@
 
 *<b>Equal Contribution</b> <sup>†</sup><b>Corresponding Author</b>
 
-[![Paper2](https://img.shields.io/badge/Paper-arXiv-red)]()
+[![Paper](https://img.shields.io/badge/Paper-arXiv-red)](https://arxiv.org/pdf/2610.17141)
 [![Project Page](https://img.shields.io/badge/Project-Website-green)](https://harbinzzy.github.io/projects/mars.html)
 
 </div>
@@ -233,7 +233,7 @@ available.
 
 ## 📝 Citation
 
-Paper and BibTeX will be added upon release.
+The paper is available on [arXiv](https://arxiv.org/pdf/2610.17141). BibTeX will be added soon.
 
 ```bibtex
 % Coming soon.
