@@ -233,10 +233,14 @@ available.
 
 ## 📝 Citation
 
-The paper is available on [arXiv](https://arxiv.org/pdf/2610.17141). BibTeX will be added soon.
-
+The paper is available on [arXiv](https://arxiv.org/pdf/2610.17141).
 ```bibtex
-% Coming soon.
+@article{zuo2026mars,
+  title={{MARS}: Systematic Multi-Level Acceleration for World Action Models},
+  author={Zuo, Zengyuan and Zhang, Yongchang and Zhao, Guangyu and Zhang, Tianze and Wu, Biao and Fang, Meng and Zhong, Yiwu},
+  journal={arXiv preprint arXiv:2610.17141},
+  year={2026}
+}
 ```
 
 ## 🙏 Acknowledgments
